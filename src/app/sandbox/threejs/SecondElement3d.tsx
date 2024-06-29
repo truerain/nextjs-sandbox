@@ -7,15 +7,16 @@ import { useControls } from 'leva';
 
 import styles from './threejs.module.css'
 import { Box, OrbitControls } from '@react-three/drei';
+import { HTMLMesh } from 'three/examples/jsm/Addons.js';
 
-function MyBox( props ) {
+function MyBox( props: any ) {
   const geom = new THREE.BoxGeometry()
   return <mesh { ...props } geometry={geom}></mesh>
 }
 
 export default function SecondElement3d() {
-  const refMesh = useRef(null);
-  const refWireMesh = useRef(null)
+  const refMesh = useRef<HTMLMesh | null> (null);
+  const refWireMesh = useRef<HTMLMesh | null> (null)
 
   const { xSize, ySize, zSize, xSegments, ySegments, zSegments } = useControls({
     xSize: { value: 1, min: 0.1, max: 5, step: 0.01 },
@@ -28,7 +29,9 @@ export default function SecondElement3d() {
 
 
   useEffect( () => {
-    refWireMesh.current.geometry = refMesh.current.geometry
+    if(refWireMesh.current && refMesh.current) {
+      refWireMesh.current.geometry = refMesh.current.geometry
+    }
   }, [xSize, ySize, zSize, xSegments, ySegments, zSegments])
   return (
     <>
