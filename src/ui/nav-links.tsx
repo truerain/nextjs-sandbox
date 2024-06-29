@@ -13,13 +13,10 @@ import clsx from 'clsx'
 // Map of links to display in the side navigation.
 // Depending on the size of the application, this would be stored in a database.
 const links = [
-  { name: 'Home', href: '/sandbox', icon: HomeIcon },
-  {
-    name: 'AsmrProg',
-    href: '/sandbox/asmrProg',
-    icon: DocumentDuplicateIcon,
-  },
-  { name: 'Online Tutorial', href: '/sandbox/onTutorial', icon: UserGroupIcon },
+  { name: '1. AsmrProg', level: 1},
+  { name: '2. Online Tutorial', level: 1},
+  { name: '3. Game', level: 1},
+  { name: '3.1 Pixel Art Sample', href: '/sandbox/pixelartgame', level: 2},
 ];
 
 export default function NavLinks() {
@@ -30,6 +27,25 @@ export default function NavLinks() {
       {links.map((link) => {
         const LinkIcon = link.icon;
         return (
+          <div key={link.name} className="transparent">
+            {(link.href) ? (
+              <Link href={link.href}>
+                <p className="pl-3 ">{link.name}</p>  
+              </Link>
+
+            ) : (
+              <div>
+                <p className="font-semibold">{link.name}</p>
+              </div>
+            )}
+          </div>
+        )}
+      )}
+    </>
+  );
+}
+
+          {/*
           <Link
             key={link.name}
             href={link.href}
@@ -40,11 +56,10 @@ export default function NavLinks() {
                }
             )}
           >
+            {(link.icon) ? (
             <LinkIcon className="w-6" />
+          ): ''}
             <p className="hidden md:block">{link.name}</p>
           </Link>
-        );
-      })}
-    </>
-  );
-}
+        )
+      }          */}
