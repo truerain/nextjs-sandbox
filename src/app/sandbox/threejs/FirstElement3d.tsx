@@ -6,13 +6,16 @@ import { useFrame } from '@react-three/fiber';
 
 import styles from './threejs.module.css'
 import { OrbitControls } from '@react-three/drei';
+import { HTMLMesh } from 'three/examples/jsm/Addons.js';
 
 
 export default function FirstElement3d() {
-  const refMesh = useRef(null);
+  const refMesh = useRef<HTMLMesh | null> (null);
   
   useFrame( (state, delta) => {
-    refMesh.current.rotation.y += delta;
+    if(refMesh.current) {
+      refMesh.current.rotation.y += delta;
+    }
   })
   
 
