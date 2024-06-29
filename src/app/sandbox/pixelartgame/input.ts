@@ -38,7 +38,7 @@ export class Input {
     //console.log(key, this.keys)
   }
 
-  keyReleased(key) {
+  keyReleased(key: string) {
     const index = this.keys.indexOf(key)
     if (index > -1) {
       this.keys.splice(index, 1)
