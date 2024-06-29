@@ -8,18 +8,21 @@ import styles from './threejs.module.css'
 import { OrbitControls } from '@react-three/drei';
 import { useControls } from 'leva';
 import { metalness } from 'three/examples/jsm/nodes/Nodes.js';
+import { HTMLMesh } from 'three/examples/jsm/Addons.js';
 
 
 export default function FirstMaterial() {
-  const refBox = useRef(null);
-  const refTorus = useRef(null);
+  const refBox = useRef<HTMLMesh | null> (null);
+  const refTorus = useRef<HTMLMesh | null> (null);
   
   useFrame( (state, delta) => {
     //refMesh.current.rotation.y += delta;
   })
   
   useEffect(() => {
-    refTorus.current.material = refBox.current.material;
+    if(refTorus.current && refBox.current) {
+      refTorus.current.material = refBox.current.material;
+    }
   })
 
   const { roughness, matalness,clearcoat } = useControls({
@@ -32,7 +35,7 @@ export default function FirstMaterial() {
     <>
       <OrbitControls />
 
-      <ambientLight itensity={0.2} />
+      <ambientLight intensity={0.2} />
       <directionalLight position={[0,1,0]} />
       <directionalLight position={[1,2,8]} intensity={0.7} />
 
