@@ -25,7 +25,7 @@ export default function NavLinks() {
   return (
     <>
       {links.map((link) => {
-        const LinkIcon = link.icon;
+        //const LinkIcon = link.icon;
         return (
           <div key={link.name} className="transparent">
             {(link.href) ? (

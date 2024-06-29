@@ -5,10 +5,10 @@ import { GAME_WIDTH, GAME_HEIGHT } from './constants'
 import { Game } from './game'
 
 export default function PixelArgGame() {
-  const refCanvas = useRef<HTMLCanvasElement>();
+  const refCanvas = useRef<HTMLCanvasElement | null>(null);
   const refRequest = useRef<number>()
   
-  const contextRef = useRef<CanvasRenderingContext2D> ();
+  const contextRef = useRef<CanvasRenderingContext2D | null> (null);
   const gameRef = useRef<Game> ();
   const timeRef = useRef<number> (0)
 
@@ -29,7 +29,7 @@ export default function PixelArgGame() {
   }, [])
 
   useEffect(() => {
-    const canvas: HTMLCanvasElement | undefined = refCanvas.current;
+    const canvas: HTMLCanvasElement | null = refCanvas.current;
     
     if(canvas) {
       canvas.width = GAME_WIDTH
