@@ -5,7 +5,7 @@ import React from 'react'
 export default function Sandbox() {
   return (
     <div>
-      <div className={styles.loader}>
+      <div>
         <span></span>
       </div>
     </div>
