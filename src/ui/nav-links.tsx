@@ -17,6 +17,8 @@ const links = [
   { name: '2. Online Tutorial', level: 1},
   { name: '3. Game', level: 1},
   { name: '3.1 Pixel Art Sample', href: '/sandbox/pixelartgame', level: 2},
+  { name: '4. CSS Exercise', level: 1},
+  { name: '4.1 Liquid Dripping', href: '/sandbox/css/liquiddripping', level: 2}, 
 ];
 
 export default function NavLinks() {
